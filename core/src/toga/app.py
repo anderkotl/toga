@@ -92,6 +92,7 @@ class OnExitHandler(Protocol):
 
 
 class BackgroundTask(Protocol):
+    # Класс наследуемый от Protocol
     def __call__(self, app: App, **kwargs: Any) -> None:
         """Code that should be executed as a background task.
 
@@ -103,6 +104,7 @@ class BackgroundTask(Protocol):
 
 
 class WindowSet(MutableSet):
+    # Класс наследуемый от MutableSet
     def __init__(self, app: App):
         """A collection of windows managed by an app.
 
@@ -221,6 +223,8 @@ class WidgetRegistry:
 
 
 class MainWindow(Window):
+     # Класс наследуемый от Window
+   
     _WINDOW_CLASS = "MainWindow"
 
     def __init__(
@@ -287,6 +291,7 @@ class MainWindow(Window):
 
 
 class DocumentMainWindow(Window):
+    # Класс наследуемый от Window
     def __init__(
         self,
         doc: Document,
@@ -854,6 +859,7 @@ class App:
 
 
 class DocumentApp(App):
+    # Класс наследуемый от App
     def __init__(
         self,
         formal_name: str | None = None,
