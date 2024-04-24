@@ -1,11 +1,17 @@
 from __future__ import annotations
-
+# Импортирование модуля
 import asyncio
+# Импортирование модуля
 import importlib.metadata
+# Импортирование метода
 import signal
+# Импортирование модуля
 import sys
+# Импортирование модуля
 import warnings
+# Импортирование модуля
 import webbrowser
+# Импортирование модуля
 from collections.abc import (
     Collection,
     ItemsView,
@@ -15,21 +21,36 @@ from collections.abc import (
     MutableSet,
     ValuesView,
 )
+# Импортирование классов
 from email.message import Message
+# Импортирование класса
 from typing import TYPE_CHECKING, Any, Protocol
+# Импортирование классов
 from warnings import warn
+# Импортирование модуля
 from weakref import WeakValueDictionary
+# Импортирование класса
 
 from toga.command import Command, CommandSet
+# Импортирование классов
 from toga.documents import Document
+# Импортирование класса
 from toga.handlers import wrapped_handler
+# Импортирование функции
 from toga.hardware.camera import Camera
+# Импортирование класса
 from toga.icons import Icon
+# Импортирование класса
 from toga.paths import Paths
+# Импортирование класса
 from toga.platform import get_platform_factory
+# Импортирование модуля
 from toga.screens import Screen
+# Импортирование класса
 from toga.widgets.base import Widget
+# Импортирование класса
 from toga.window import Window
+# Импортирование класса
 
 if TYPE_CHECKING:
     from toga.icons import IconContent
@@ -37,9 +58,10 @@ if TYPE_CHECKING:
 # Make sure deprecation warnings are shown by default
 warnings.filterwarnings("default", category=DeprecationWarning)
 
-
 class AppStartupMethod(Protocol):
+    # Класс наследуемый от Protocol
     def __call__(self, app: App, **kwargs: Any) -> Widget:
+       # метод call отвечающий за вызов классов App,Any
         """The startup method of the app.
 
         Called during app startup to set the initial main window content.
@@ -53,6 +75,7 @@ class AppStartupMethod(Protocol):
 
 
 class OnExitHandler(Protocol):
+    # Класс наследуемый от Protocol
     def __call__(self, app: App, **kwargs: Any) -> bool:
         """A handler to invoke when the app is about to exit.
 
