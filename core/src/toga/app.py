@@ -79,6 +79,7 @@ class OnExitHandler(Protocol):
     # Класс наследуемый от Protocol
     def __call__(self, app: App, **kwargs: Any) -> bool:
         # метод call отвечающий за вызов классов App,Any
+        # результатом функции должно быть значение типа bool, что означает логическое значение True или False
         """A handler to invoke when the app is about to exit.
 
         The return value of this callback controls whether the app is allowed to exit.
@@ -96,6 +97,8 @@ class OnExitHandler(Protocol):
 class BackgroundTask(Protocol):
     # Класс наследуемый от Protocol
     def __call__(self, app: App, **kwargs: Any) -> None:
+        # метод call отвечающий за вызов классов App,Any
+        # функция класса , ничего не возвращает
         """Code that should be executed as a background task.
 
         :param app: The app that is handling the background task.
@@ -119,7 +122,7 @@ class WindowSet(MutableSet):
         self.elements = set()
 
     def add(self, window: Window) -> None:
-        # функция класса , ничего не возвращает
+        # определение метода add, который принимает параметры self и window, и не возвращает никакого значения (тип None).
         if not isinstance(window, Window):
             # проверка ложности выражения
             raise TypeError("Can only add objects of type toga.Window")
@@ -129,7 +132,7 @@ class WindowSet(MutableSet):
             window.app = self.app
 
     def discard(self, window: Window) -> None:
-         # функция класса , ничего не возвращает
+         # определение метода discard, который принимает параметры self и window, и не возвращает никакого значения (тип None).
         if not isinstance(window, Window):
             raise TypeError("Can only discard objects of type toga.Window")
         if window not in self.elements:
