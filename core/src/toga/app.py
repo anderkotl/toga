@@ -62,6 +62,7 @@ class AppStartupMethod(Protocol):
     # Класс наследуемый от Protocol
     def __call__(self, app: App, **kwargs: Any) -> Widget:
        # метод call отвечающий за вызов классов App,Any
+       # результатом функции должен быть объект класса Widget
         """The startup method of the app.
 
         Called during app startup to set the initial main window content.
@@ -77,6 +78,7 @@ class AppStartupMethod(Protocol):
 class OnExitHandler(Protocol):
     # Класс наследуемый от Protocol
     def __call__(self, app: App, **kwargs: Any) -> bool:
+        # метод call отвечающий за вызов классов App,Any
         """A handler to invoke when the app is about to exit.
 
         The return value of this callback controls whether the app is allowed to exit.
@@ -106,6 +108,7 @@ class BackgroundTask(Protocol):
 class WindowSet(MutableSet):
     # Класс наследуемый от MutableSet
     def __init__(self, app: App):
+        # функция инициализации объекта класса
         """A collection of windows managed by an app.
 
         A window is automatically added to the app when it is created, and removed when
@@ -116,7 +119,9 @@ class WindowSet(MutableSet):
         self.elements = set()
 
     def add(self, window: Window) -> None:
+        # функция класса , ничего не возвращает
         if not isinstance(window, Window):
+            # проверка ложности выражения
             raise TypeError("Can only add objects of type toga.Window")
         # Silently not add if duplicate
         if window not in self.elements:
@@ -124,6 +129,7 @@ class WindowSet(MutableSet):
             window.app = self.app
 
     def discard(self, window: Window) -> None:
+         # функция класса , ничего не возвращает
         if not isinstance(window, Window):
             raise TypeError("Can only discard objects of type toga.Window")
         if window not in self.elements:
